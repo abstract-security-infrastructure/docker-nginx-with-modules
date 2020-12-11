@@ -1,4 +1,4 @@
-ARG nginx_version=1.16.1
+ARG nginx_version=1.18.0
 FROM nginx:${nginx_version} AS build
 
 SHELL ["/bin/bash", "-c"]

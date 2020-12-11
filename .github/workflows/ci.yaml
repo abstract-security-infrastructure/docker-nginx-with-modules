@@ -33,7 +33,7 @@ jobs:
     - uses: docker/build-push-action@v2
       with:
         load: true
-        tags: tsuru/nginx-pre-labels-${{ matrix.flavor }}:${{ matrix.nginx }}
+        tags: abstractsecurityinfrastructure/nginx-aes/nginx-pre-labels-${{ matrix.flavor }}:${{ matrix.nginx }}
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
         build-args: |
@@ -41,8 +41,8 @@ jobs:
           modules=${{ env.MODULES }}
           lua_modules=${{ env.LUA_MODULES }}
     - run: make test flavor=${{ matrix.flavor }} nginx_version=${{ matrix.nginx }}
-    - run: echo PUSH_TAG=tsuru/nginx-${{ matrix.flavor }}:${{ matrix.nginx }}-${GITHUB_REF##*/} >> $GITHUB_ENV
-    - run: echo MODULE_NAMES=$(docker run --rm tsuru/nginx-pre-labels-${{ matrix.flavor }}:${{ matrix.nginx }} sh -c 'ls /etc/nginx/modules/*.so | grep -v debug | xargs -I{} basename {} .so | paste -sd "," -') >> $GITHUB_ENV
+    - run: echo PUSH_TAG=abstractsecurityinfrastructure/nginx-aes/nginx-${{ matrix.flavor }}:${{ matrix.nginx }}-${GITHUB_REF##*/} >> $GITHUB_ENV
+    - run: echo MODULE_NAMES=$(docker run --rm abstractsecurityinfrastructure/nginx-pre-labels-${{ matrix.flavor }}:${{ matrix.nginx }} sh -c 'ls /etc/nginx/modules/*.so | grep -v debug | xargs -I{} basename {} .so | paste -sd "," -') >> $GITHUB_ENV
     - uses: docker/build-push-action@v2
       if: github.event_name != 'pull_request'
       with:

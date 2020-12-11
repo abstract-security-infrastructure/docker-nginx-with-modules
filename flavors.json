@@ -16,7 +16,8 @@
         "https://github.com/openresty/lua-ssl-nginx-module.git:pr-11",
         "https://github.com/SpiderLabs/ModSecurity-nginx.git:v1.0.0",
         "https://github.com/arut/nginx-dav-ext-module:v3.0.0",
-        "https://github.com/tsuru/ngx-location-name-module.git:main"
+        "https://github.com/tsuru/ngx-location-name-module.git:main",
+        "https://github.com/openresty/encrypted-session-nginx-module:v0.08"
       ],
       "lua_modules": [
         "tsuru-rpaasv2 INOTIFY_INCDIR=/usr/include/x86_64-linux-gnu"
