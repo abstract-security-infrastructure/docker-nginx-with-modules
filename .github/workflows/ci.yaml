@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        nginx: [stable, "1.18.0"]
+        nginx: [stable]
         flavor: [tsuru]
         experimental: [false]
         include:

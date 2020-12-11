@@ -1,4 +1,4 @@
-nginx_version ?= stable
+nginx_version ?= mainline
 cached_layers ?= true
 flavor = tsuru
 

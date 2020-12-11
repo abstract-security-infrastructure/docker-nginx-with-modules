@@ -1,4 +1,4 @@
-ARG nginx_version=1.18.0
+ARG nginx_version=mainline
 FROM nginx:${nginx_version} AS build
 
 SHELL ["/bin/bash", "-c"]
@@ -79,7 +79,7 @@ RUN set -x \
     done; unset IFS \
     && eval ./configure ${configure_args} \
     && make modules \
-    && cp -v objs/*.so /usr/lib/nginx/modules/
+    && cp -v objs/*.so /usr/lib/nginx/modules/ || true
 
 ARG luarocks_version=3.3.1
 RUN set -x \
