@@ -15,7 +15,7 @@ image:
 
 test:
 	@docker rm -f test-abstractsecurityinfrastructure-nginx-$(flavor)-$(nginx_version) || true
-	@docker create -p 8888:8080 --name test-abstractsecurityinfrastructure-nginx-$(flavor)-$(nginx_version) abstractsecurityinfrastructure/nginx-aes/nginx-pre-labels-$(flavor):$(nginx_version) bash -c " \
+	@docker create -p 8888:8080 --name test-abstractsecurityinfrastructure-nginx-$(flavor)-$(nginx_version) abstractsecurityinfrastructure/nginx-pre-labels-$(flavor):$(nginx_version) bash -c " \
 	openssl req -x509 -newkey rsa:4096 -nodes -subj '/CN=localhost' -keyout /etc/nginx/key.pem -out /etc/nginx/cert.pem -days 365; \
 	nginx -c /etc/nginx/nginx-$(flavor).conf"
 	@docker cp $$PWD/test/nginx-$(flavor).conf test-abstractsecurityinfrastructure-nginx-$(flavor)-$(nginx_version):/etc/nginx/
